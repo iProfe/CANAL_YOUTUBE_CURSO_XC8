@@ -1,0 +1,572 @@
+
+
+Microchip MPLAB XC8 Assembler V2.10 build 88905656 
+                                                                                               Thu May 21 20:02:30 2020
+
+Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1 
+     1                           	processor	18F4550
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	flic
+     5                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     6                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,noexec
+     7                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     8                           	psect	text1,global,reloc=2,class=CODE,delta=1
+     9                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    11                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    12                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    13  0000                     
+    14                           ; Version 2.10
+    15                           ; Generated 31/07/2019 GMT
+    16                           ; 
+    17                           ; Copyright © 2019, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    18                           ; All rights reserved.
+    19                           ; 
+    20                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    21                           ; 
+    22                           ; Redistribution and use in source and binary forms, with or without modification, are
+    23                           ; permitted provided that the following conditions are met:
+    24                           ; 
+    25                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    26                           ;        conditions and the following disclaimer.
+    27                           ; 
+    28                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    29                           ;        of conditions and the following disclaimer in the documentation and/or other
+    30                           ;        materials provided with the distribution.
+    31                           ; 
+    32                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    33                           ;        software without specific prior written permission.
+    34                           ; 
+    35                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    36                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    37                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    38                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    39                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    40                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    41                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    42                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    43                           ; 
+    44                           ; 
+    45                           ; Code-generator required, PIC18F4550 Definitions
+    46                           ; 
+    47                           ; SFR Addresses
+    48  0000                     _TRISD	set	3989
+    49  0000                     _TRISB	set	3987
+    50  0000                     _ADCON1	set	4033
+    51  0000                     _PORTBbits	set	3969
+    52  0000                     _PORTDbits	set	3971
+    53                           
+    54                           ; #config settings
+    55  0000                     
+    56                           	psect	cinit
+    57  007F4C                     __pcinit:
+    58                           	opt callstack 0
+    59  007F4C                     start_initialization:
+    60                           	opt callstack 0
+    61  007F4C                     __initialization:
+    62                           	opt callstack 0
+    63  007F4C                     end_of_initialization:
+    64                           	opt callstack 0
+    65  007F4C                     __end_of__initialization:
+    66                           	opt callstack 0
+    67  007F4C  0100               	movlb	0
+    68  007F4E  EFA9  F03F         	goto	_main	;jump to C main() function
+    69                           
+    70                           	psect	cstackCOMRAM
+    71  000000                     __pcstackCOMRAM:
+    72                           	opt callstack 0
+    73  000000                     
+    74                           ; 1 bytes @ 0x0
+    75 ;;
+    76 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+    77 ;;
+    78 ;; *************** function _main *****************
+    79 ;; Defined at:
+    80 ;;		line 46 in file "main.c"
+    81 ;; Parameters:    Size  Location     Type
+    82 ;;		None
+    83 ;; Auto vars:     Size  Location     Type
+    84 ;;		None
+    85 ;; Return value:  Size  Location     Type
+    86 ;;                  1    wreg      void 
+    87 ;; Registers used:
+    88 ;;		wreg, status,2, cstack
+    89 ;; Tracked objects:
+    90 ;;		On entry : 0/0
+    91 ;;		On exit  : 0/0
+    92 ;;		Unchanged: 0/0
+    93 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+    94 ;;      Params:         0       0       0       0       0       0       0       0       0
+    95 ;;      Locals:         0       0       0       0       0       0       0       0       0
+    96 ;;      Temps:          0       0       0       0       0       0       0       0       0
+    97 ;;      Totals:         0       0       0       0       0       0       0       0       0
+    98 ;;Total ram usage:        0 bytes
+    99 ;; Hardware stack levels required when called:    2
+   100 ;; This function calls:
+   101 ;;		_test_sentido
+   102 ;; This function is called by:
+   103 ;;		Startup code after reset
+   104 ;; This function uses a non-reentrant model
+   105 ;;
+   106                           
+   107                           	psect	text0
+   108  007F52                     __ptext0:
+   109                           	opt callstack 0
+   110  007F52                     _main:
+   111                           	opt callstack 29
+   112  007F52                     
+   113                           ;main.c: 48:     ADCON1 = 0x0F;
+   114  007F52  0E0F               	movlw	15
+   115  007F54  6EC1               	movwf	193,c	;volatile
+   116  007F56                     
+   117                           ;main.c: 49:     TRISB = 0xFF;
+   118  007F56  6893               	setf	147,c	;volatile
+   119                           
+   120                           ;main.c: 50:     TRISD = 0x00;
+   121  007F58  0E00               	movlw	0
+   122  007F5A  6E95               	movwf	149,c	;volatile
+   123  007F5C                     l739:
+   124                           
+   125                           ;main.c: 54:         if(PORTBbits.RB2==0){
+   126  007F5C  B481               	btfsc	129,2,c	;volatile
+   127  007F5E  EFB3  F03F         	goto	u91
+   128  007F62  EFB5  F03F         	goto	u90
+   129  007F66                     u91:
+   130  007F66  EFB8  F03F         	goto	l29
+   131  007F6A                     u90:
+   132  007F6A                     
+   133                           ;main.c: 55:             PORTDbits.RD2=1;
+   134  007F6A  8483               	bsf	131,2,c	;volatile
+   135                           
+   136                           ;main.c: 56:         }
+   137  007F6C  EFB9  F03F         	goto	l743
+   138  007F70                     l29:
+   139                           
+   140                           ;main.c: 58:             PORTDbits.RD2=0;
+   141  007F70  9483               	bcf	131,2,c	;volatile
+   142  007F72                     l743:
+   143                           
+   144                           ;main.c: 60:         test_sentido();
+   145  007F72  ECBF  F03F         	call	_test_sentido	;wreg free
+   146  007F76  EFAE  F03F         	goto	l739
+   147  007F7A  EF00  F000         	goto	start
+   148  007F7E                     __end_of_main:
+   149                           	opt callstack 0
+   150                           
+   151 ;; *************** function _test_sentido *****************
+   152 ;; Defined at:
+   153 ;;		line 28 in file "main.c"
+   154 ;; Parameters:    Size  Location     Type
+   155 ;;		None
+   156 ;; Auto vars:     Size  Location     Type
+   157 ;;		None
+   158 ;; Return value:  Size  Location     Type
+   159 ;;                  1    wreg      void 
+   160 ;; Registers used:
+   161 ;;		cstack
+   162 ;; Tracked objects:
+   163 ;;		On entry : 0/0
+   164 ;;		On exit  : 0/0
+   165 ;;		Unchanged: 0/0
+   166 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   167 ;;      Params:         0       0       0       0       0       0       0       0       0
+   168 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   169 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   170 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   171 ;;Total ram usage:        0 bytes
+   172 ;; Hardware stack levels used:    1
+   173 ;; Hardware stack levels required when called:    1
+   174 ;; This function calls:
+   175 ;;		_Horario
+   176 ;;		_antiHorario
+   177 ;; This function is called by:
+   178 ;;		_main
+   179 ;; This function uses a non-reentrant model
+   180 ;;
+   181                           
+   182                           	psect	text1
+   183  007F7E                     __ptext1:
+   184                           	opt callstack 0
+   185  007F7E                     _test_sentido:
+   186                           	opt callstack 29
+   187  007F7E                     
+   188                           ;main.c: 29:         if(PORTBbits.RB0==1 && PORTBbits.RB1==0){
+   189  007F7E  A081               	btfss	129,0,c	;volatile
+   190  007F80  EFC4  F03F         	goto	u11
+   191  007F84  EFC6  F03F         	goto	u10
+   192  007F88                     u11:
+   193  007F88  EFCF  F03F         	goto	l719
+   194  007F8C                     u10:
+   195  007F8C  B281               	btfsc	129,1,c	;volatile
+   196  007F8E  EFCB  F03F         	goto	u21
+   197  007F92  EFCD  F03F         	goto	u20
+   198  007F96                     u21:
+   199  007F96  EFCF  F03F         	goto	l719
+   200  007F9A                     u20:
+   201  007F9A                     
+   202                           ;main.c: 30:             antiHorario();
+   203  007F9A  ECA3  F03F         	call	_antiHorario	;wreg free
+   204  007F9E                     l719:
+   205                           
+   206                           ;main.c: 32:         if(PORTBbits.RB0==0 && PORTBbits.RB1==1 ){
+   207  007F9E  B081               	btfsc	129,0,c	;volatile
+   208  007FA0  EFD4  F03F         	goto	u31
+   209  007FA4  EFD6  F03F         	goto	u30
+   210  007FA8                     u31:
+   211  007FA8  EFDF  F03F         	goto	l725
+   212  007FAC                     u30:
+   213  007FAC  A281               	btfss	129,1,c	;volatile
+   214  007FAE  EFDB  F03F         	goto	u41
+   215  007FB2  EFDD  F03F         	goto	u40
+   216  007FB6                     u41:
+   217  007FB6  EFDF  F03F         	goto	l725
+   218  007FBA                     u40:
+   219  007FBA                     
+   220                           ;main.c: 33:             Horario();
+   221  007FBA  ECA0  F03F         	call	_Horario	;wreg free
+   222  007FBE                     l725:
+   223                           
+   224                           ;main.c: 35:         if(PORTBbits.RB0==0 && PORTBbits.RB1==0 ){
+   225  007FBE  B081               	btfsc	129,0,c	;volatile
+   226  007FC0  EFE4  F03F         	goto	u51
+   227  007FC4  EFE6  F03F         	goto	u50
+   228  007FC8                     u51:
+   229  007FC8  EFEF  F03F         	goto	l21
+   230  007FCC                     u50:
+   231  007FCC  B281               	btfsc	129,1,c	;volatile
+   232  007FCE  EFEB  F03F         	goto	u61
+   233  007FD2  EFED  F03F         	goto	u60
+   234  007FD6                     u61:
+   235  007FD6  EFEF  F03F         	goto	l21
+   236  007FDA                     u60:
+   237  007FDA                     
+   238                           ;main.c: 36:             PORTDbits.RD0=0;
+   239  007FDA  9083               	bcf	131,0,c	;volatile
+   240                           
+   241                           ;main.c: 37:             PORTDbits.RD1=0;
+   242  007FDC  9283               	bcf	131,1,c	;volatile
+   243  007FDE                     l21:
+   244                           
+   245                           ;main.c: 39:          if(PORTBbits.RB0==1 && PORTBbits.RB1==1 ){
+   246  007FDE  A081               	btfss	129,0,c	;volatile
+   247  007FE0  EFF4  F03F         	goto	u71
+   248  007FE4  EFF6  F03F         	goto	u70
+   249  007FE8                     u71:
+   250  007FE8  EFFF  F03F         	goto	l23
+   251  007FEC                     u70:
+   252  007FEC  A281               	btfss	129,1,c	;volatile
+   253  007FEE  EFFB  F03F         	goto	u81
+   254  007FF2  EFFD  F03F         	goto	u80
+   255  007FF6                     u81:
+   256  007FF6  EFFF  F03F         	goto	l23
+   257  007FFA                     u80:
+   258  007FFA                     
+   259                           ;main.c: 40:             PORTDbits.RD0=0;
+   260  007FFA  9083               	bcf	131,0,c	;volatile
+   261                           
+   262                           ;main.c: 41:             PORTDbits.RD1=0;
+   263  007FFC  9283               	bcf	131,1,c	;volatile
+   264  007FFE                     l23:
+   265  007FFE  0012               	return		;funcret
+   266  008000                     __end_of_test_sentido:
+   267                           	opt callstack 0
+   268                           
+   269 ;; *************** function _antiHorario *****************
+   270 ;; Defined at:
+   271 ;;		line 18 in file "main.c"
+   272 ;; Parameters:    Size  Location     Type
+   273 ;;		None
+   274 ;; Auto vars:     Size  Location     Type
+   275 ;;		None
+   276 ;; Return value:  Size  Location     Type
+   277 ;;                  1    wreg      void 
+   278 ;; Registers used:
+   279 ;;		None
+   280 ;; Tracked objects:
+   281 ;;		On entry : 0/0
+   282 ;;		On exit  : 0/0
+   283 ;;		Unchanged: 0/0
+   284 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   285 ;;      Params:         0       0       0       0       0       0       0       0       0
+   286 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   287 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   288 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   289 ;;Total ram usage:        0 bytes
+   290 ;; Hardware stack levels used:    1
+   291 ;; This function calls:
+   292 ;;		Nothing
+   293 ;; This function is called by:
+   294 ;;		_test_sentido
+   295 ;; This function uses a non-reentrant model
+   296 ;;
+   297                           
+   298                           	psect	text2
+   299  007F46                     __ptext2:
+   300                           	opt callstack 0
+   301  007F46                     _antiHorario:
+   302                           	opt callstack 29
+   303  007F46                     
+   304                           ;main.c: 19:     PORTDbits.RD0=0;
+   305  007F46  9083               	bcf	131,0,c	;volatile
+   306                           
+   307                           ;main.c: 20:     PORTDbits.RD1=1;
+   308  007F48  8283               	bsf	131,1,c	;volatile
+   309  007F4A  0012               	return		;funcret
+   310  007F4C                     __end_of_antiHorario:
+   311                           	opt callstack 0
+   312                           
+   313 ;; *************** function _Horario *****************
+   314 ;; Defined at:
+   315 ;;		line 23 in file "main.c"
+   316 ;; Parameters:    Size  Location     Type
+   317 ;;		None
+   318 ;; Auto vars:     Size  Location     Type
+   319 ;;		None
+   320 ;; Return value:  Size  Location     Type
+   321 ;;                  1    wreg      void 
+   322 ;; Registers used:
+   323 ;;		None
+   324 ;; Tracked objects:
+   325 ;;		On entry : 0/0
+   326 ;;		On exit  : 0/0
+   327 ;;		Unchanged: 0/0
+   328 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   329 ;;      Params:         0       0       0       0       0       0       0       0       0
+   330 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   331 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   332 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   333 ;;Total ram usage:        0 bytes
+   334 ;; Hardware stack levels used:    1
+   335 ;; This function calls:
+   336 ;;		Nothing
+   337 ;; This function is called by:
+   338 ;;		_test_sentido
+   339 ;; This function uses a non-reentrant model
+   340 ;;
+   341                           
+   342                           	psect	text3
+   343  007F40                     __ptext3:
+   344                           	opt callstack 0
+   345  007F40                     _Horario:
+   346                           	opt callstack 29
+   347  007F40                     
+   348                           ;main.c: 24:     PORTDbits.RD0=1;
+   349  007F40  8083               	bsf	131,0,c	;volatile
+   350                           
+   351                           ;main.c: 25:     PORTDbits.RD1=0;
+   352  007F42  9283               	bcf	131,1,c	;volatile
+   353  007F44  0012               	return		;funcret
+   354  007F46                     __end_of_Horario:
+   355                           	opt callstack 0
+   356  0000                     
+   357                           	psect	rparam
+   358  0000                     tosu	equ	0xFFF
+   359                           tosh	equ	0xFFE
+   360                           tosl	equ	0xFFD
+   361                           stkptr	equ	0xFFC
+   362                           pclatu	equ	0xFFB
+   363                           pclath	equ	0xFFA
+   364                           pcl	equ	0xFF9
+   365                           tblptru	equ	0xFF8
+   366                           tblptrh	equ	0xFF7
+   367                           tblptrl	equ	0xFF6
+   368                           tablat	equ	0xFF5
+   369                           prodh	equ	0xFF4
+   370                           prodl	equ	0xFF3
+   371                           indf0	equ	0xFEF
+   372                           postinc0	equ	0xFEE
+   373                           postdec0	equ	0xFED
+   374                           preinc0	equ	0xFEC
+   375                           plusw0	equ	0xFEB
+   376                           fsr0h	equ	0xFEA
+   377                           fsr0l	equ	0xFE9
+   378                           wreg	equ	0xFE8
+   379                           indf1	equ	0xFE7
+   380                           postinc1	equ	0xFE6
+   381                           postdec1	equ	0xFE5
+   382                           preinc1	equ	0xFE4
+   383                           plusw1	equ	0xFE3
+   384                           fsr1h	equ	0xFE2
+   385                           fsr1l	equ	0xFE1
+   386                           bsr	equ	0xFE0
+   387                           indf2	equ	0xFDF
+   388                           postinc2	equ	0xFDE
+   389                           postdec2	equ	0xFDD
+   390                           preinc2	equ	0xFDC
+   391                           plusw2	equ	0xFDB
+   392                           fsr2h	equ	0xFDA
+   393                           fsr2l	equ	0xFD9
+   394                           status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95      0       0
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+    BANK6           256      0       0
+    BANK7           256      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0       0
+                       _test_sentido
+ ---------------------------------------------------------------------------------
+ (1) _test_sentido                                         0     0      0       0
+                            _Horario
+                        _antiHorario
+ ---------------------------------------------------------------------------------
+ (2) _antiHorario                                          0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _Horario                                              0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _test_sentido
+     _Horario
+     _antiHorario
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMRAM           5F      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMRAM              5F      0       0       1        0.0%
+STACK                0      0       0       2        0.0%
+DATA                 0      0       0       3        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK6           100      0       0      16        0.0%
+BANK6              100      0       0      17        0.0%
+BITBANK7           100      0       0      18        0.0%
+BANK7              100      0       0      19        0.0%
+ABS                  0      0       0      20        0.0%
+BIGRAM             7FF      0       0      21        0.0%
+BITSFR               0      0       0     200        0.0%
+SFR                  0      0       0     200        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V2.10 build 88905656 
+Symbol Table                                                                                   Thu May 21 20:02:30 2020
+
+                     l13 7F4A                       l21 7FDE                       l23 7FFE  
+                     l16 7F44                       l29 7F70                       u10 7F8C  
+                     u11 7F88                       u20 7F9A                       u21 7F96  
+                     u30 7FAC                       u31 7FA8                       u40 7FBA  
+                     u41 7FB6                       u50 7FCC                       u51 7FC8  
+                     u60 7FDA                       u61 7FD6                       u70 7FEC  
+                     u71 7FE8                       u80 7FFA                       u81 7FF6  
+                     u90 7F6A                       u91 7F66              __CFG_BORV$3 000000  
+           __CFG_CP0$OFF 000000             __CFG_CP1$OFF 000000             __CFG_CP2$OFF 000000  
+           __CFG_CP3$OFF 000000                      l711 7F40                      l721 7FAC  
+                    l713 7F7E                      l731 7FEC                      l723 7FBA  
+                    l715 7F8C                      l709 7F46                      l733 7FFA  
+                    l725 7FBE                      l717 7F9A                      l741 7F6A  
+                    l727 7FCC                      l719 7F9E                      l743 7F72  
+                    l735 7F52                      l729 7FDA                      l737 7F56  
+                    l739 7F5C             __CFG_CPB$OFF 000000             __CFG_CPD$OFF 000000  
+           __CFG_BOR$OFF 000000             __CFG_LVP$OFF 000000             __CFG_WDT$OFF 000000  
+                   _main 7F52                     start 0000            __CFG_IESO$OFF 000000  
+          __CFG_MCLRE$ON 000000             ___param_bank 000000          __end_of_Horario 7F46  
+          __CFG_PLLDIV$1 000000           __CFG_CCP2MX$ON 000000                    ?_main 0000  
+          __CFG_USBDIV$1 000000                    _TRISB 000F93                    _TRISD 000F95  
+          __CFG_PWRT$OFF 000000            __CFG_WRT0$OFF 000000            __CFG_WRT1$OFF 000000  
+          __CFG_WRT2$OFF 000000            __CFG_WRT3$OFF 000000           __CFG_EBTR0$OFF 000000  
+         __CFG_FCMEN$OFF 000000           __CFG_EBTR1$OFF 000000           __CFG_EBTR2$OFF 000000  
+         __CFG_EBTR3$OFF 000000            __CFG_WRTB$OFF 000000            __CFG_WRTC$OFF 000000  
+          __CFG_WRTD$OFF 000000           __CFG_EBTRB$OFF 000000           __CFG_ICPRT$OFF 000000  
+        __initialization 7F4C             __end_of_main 7F7E                   ??_main 0000  
+          __activetblptr 000000     __size_of_antiHorario 0006                   _ADCON1 000FC1  
+              ??_Horario 0000           __CFG_XINST$OFF 000000           __CFG_STVREN$ON 000000  
+             __accesstop 0060  __end_of__initialization 7F4C          __CFG_PBADEN$OFF 000000  
+          ___rparam_used 000001           __pcstackCOMRAM 0000          __CFG_VREGEN$OFF 000000  
+                _Horario 7F40                  __Hparam 0000                  __Lparam 0000  
+                __pcinit 7F4C                  __ramtop 0800                  __ptext0 7F52  
+                __ptext1 7F7E                  __ptext2 7F46                  __ptext3 7F40  
+   end_of_initialization 7F4C                _PORTBbits 000F81                _PORTDbits 000F83  
+          ??_antiHorario 0000            ?_test_sentido 0000           ??_test_sentido 0000  
+    start_initialization 7F4C      __end_of_antiHorario 7F4C         __CFG_LPT1OSC$OFF 000000  
+               ?_Horario 0000              _antiHorario 7F46     __end_of_test_sentido 8000  
+       __CFG_WDTPS$32768 000000                 __Hrparam 0000         __size_of_Horario 0006  
+               __Lrparam 0000    __CFG_FOSC$INTOSCIO_EC 000000            __size_of_main 002C  
+  __CFG_CPUDIV$OSC1_PLL2 000000    __size_of_test_sentido 0082             ?_antiHorario 0000  
+           _test_sentido 7F7E  
